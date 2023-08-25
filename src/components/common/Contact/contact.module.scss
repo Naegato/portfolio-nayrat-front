@@ -1,0 +1,51 @@
+@use 'src/styles/variables' as v;
+@use 'src/styles/mixins/icons' as i;
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: darkgrey;
+}
+
+.email {
+  &:after {
+    @include i.icon(v.$mail);
+  }
+}
+
+.phone {
+  &:after {
+    @include i.icon(v.$phone);
+  }
+}
+
+.instagram {
+  &:after {
+    @include i.icon(v.$instagram);
+  }
+}
+
+.linkedin {
+  &:after {
+    @include i.icon(v.$linkedin);
+  }
+}
+
+.behance {
+  &:after {
+    @include i.icon(v.$behance);
+  }
+}
+
+// primary
+// secondary
+// tertiary
+// quaternary
+// quinary
+// senary
+// septenary
+// octonary
+// nonary
+// denary

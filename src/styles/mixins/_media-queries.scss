@@ -1,0 +1,86 @@
+@use 'src/styles/variables';
+
+/**
+* Used to declare media queries. Usage examples :
+* - @include above(sm) {...}
+* - @include below(sm) {...}
+* - @include between(sm, md) {...}
+ */
+
+// @include above(sm) {}
+@mixin above($breakpoint) {
+  @if map-has-key(variables.$breakpoints, $breakpoint) {
+    $breakpoint-value: map-get(variables.$breakpoints, $breakpoint);
+
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// @include height-above(600px) {}
+@mixin height-above($breakpoint) {
+  @media (min-height: ($breakpoint - 1)) {
+    @content;
+  }
+}
+
+// @include below(sm) {}
+@mixin below($breakpoint) {
+  @if map-has-key(variables.$breakpoints, $breakpoint) {
+    $breakpoint-value: map-get(variables.$breakpoints, $breakpoint);
+
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+// @include height-below(600px) {}
+@mixin height-below($breakpoint) {
+  @media (max-height: ($breakpoint - 1)) {
+    @content;
+  }
+}
+
+// @include between(sm, md) {}
+@mixin between($lower, $upper) {
+  @if map-has-key(variables.$breakpoints, $lower) and map-has-key(variables.$breakpoints, $upper) {
+    $lower-breakpoint: map-get(variables.$breakpoints, $lower);
+    $upper-breakpoint: map-get(variables.$breakpoints, $upper);
+
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+      @content;
+    }
+  } @else {
+    @if (map-has-key(variables.$breakpoints, $lower) == false) {
+      @warn 'Your lower breakpoint was invalid: #{$lower}.';
+    }
+
+    @if (map-has-key(variables.$breakpoints, $upper) == false) {
+      @warn 'Your upper breakpoint was invalid: #{$upper}.';
+    }
+  }
+}
+
+@mixin mobile() {
+  @include below(sm) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @include below(md) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @include above(sm) {
+    @content;
+  }
+}

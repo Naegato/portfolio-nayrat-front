@@ -1,0 +1,32 @@
+@use 'variables.scss' as v;
+
+html, body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+  background-image: url('../../public/bgImage.png');
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-position: top center;
+  color: v.$text-color;
+  font-family: v.$font-family;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

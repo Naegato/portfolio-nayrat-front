@@ -1,0 +1,12 @@
+@use "src/styles/variables" as v;
+
+@mixin icon($icon) {
+  display: inline-block;
+  font-family: v.$icomoon-font-family;
+  font-style: normal;
+  font-weight: normal;
+  content: $icon;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

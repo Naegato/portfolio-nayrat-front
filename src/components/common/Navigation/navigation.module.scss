@@ -1,0 +1,20 @@
+@use 'src/styles/mixins/media-queries.scss' as mq;
+@use 'src/styles/_variables.scss' as v;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  font-size: 4rem;
+  padding: 5rem 0 3.5rem;
+  font-family: v.$font-family-secondary;
+  
+  .link {
+    color: darkgrey;
+    
+    &.active {
+      color: black;
+    }
+  }
+}

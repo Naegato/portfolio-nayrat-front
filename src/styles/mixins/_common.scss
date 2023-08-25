@@ -1,0 +1,5 @@
+@mixin aspectRatio($ratio) {
+  position: relative;
+  height: 0;
+  padding-bottom: calc(1 / #{$ratio} * 100%);
+}
